@@ -11,7 +11,7 @@ const Checkbox = (props) => {
           return options.map((option) => {
             return (
               <React.Fragment key={option.key}>
-                <div className="radiogroup">
+                <div className="checkgroup">
                   <input
                     type="checkbox"
                     id={option.value}

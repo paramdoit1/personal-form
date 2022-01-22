@@ -4,35 +4,35 @@ import { Formik, Form } from "formik";
 
 import { Input } from "../components/common";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const initialValues = {
-    emailAddress: "",
+    username: "",
     password: "",
   };
 
   const validationSchema = Yup.object({
-    emailAddress: Yup.string()
-      .email("Invalid email format")
-      .required("Email address required"),
+    username: Yup.string()
+      .required("username required"),
     password: Yup.string().required("Password required"),
   });
 
   const onSubmit = (values) => {
-    console.log("Values: ", values);
+    props.next(values);
   };
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={props.data}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
       {(formik) => {
         return (
-          <Form className="App">
-            <Input type="email" label="Email Address" name="emailAddress" />
+          <Form>
+            <p className="form-label"> Login </p>
+            <Input type="input" label="User name" name="username" className = "user" />
             <Input type="password" label="Password" name="password" />
-            <button type='submit'>Submit</button>
+            <button type='submit'>Next</button>
           </Form>
         );
       }}

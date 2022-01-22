@@ -6,12 +6,13 @@ const Radio = props => {
     return (
       <div className="field-control">
         <label>{label}</label>
+        <div className="radiogroup">
         <Field name={name} >
           {({ field }) => {
             return options.map(option => {
               return (
                 <React.Fragment key={option.key}>
-                    <div className="radiogroup">
+                    <div>
                   <input
                     type='radio'
                     id={option.value}
@@ -21,12 +22,13 @@ const Radio = props => {
                     checked={field.value === option.value}
                   />
                   <label htmlFor={option.value}>{option.key}</label>
-                  </div>
+                    </div>
                 </React.Fragment>
               )
             })
           }}
         </Field>
+        </div>
       <ErrorMessage name = {name} component = "div" className="error" />
     </div>
   )

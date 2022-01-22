@@ -3,7 +3,7 @@ import {Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import {Input, TextArea, Select, Radio, Checkbox, Datepicker} from '../components/common'
 
-export default function PersonalForm() {
+export default function PersonalForm(props) {
 
     const departmentOptions = [
         {key: 'Select an option' , value: ''},
@@ -14,14 +14,14 @@ export default function PersonalForm() {
     ];
 
     const modeOfCommunication = [
-        {key: 'telephone', value:'telephone'},
-        {key:'email', value:'email'}
+        {key: 'Telephone', value:'telephone'},
+        {key:'Email', value:'email'}
     ];
     const hobbies = [
-        {key: 'playing', value:'playing'},
-        {key:'gardening', value:'gardening'},
-        {key:'reading', value:'reading'},
-        {key:'watching tv', value:'watching tv'}
+        {key: 'Playing', value:'playing'},
+        {key:'Gardening', value:'gardening'},
+        {key:'Reading', value:'reading'},
+        {key:'Watching tv', value:'watching tv'}
     ];
     const initialValues = {
         email : '',
@@ -34,25 +34,26 @@ export default function PersonalForm() {
     const validationSchema= Yup.object({
         email: Yup.string().email('invalid format').required('enter email'),
         description: Yup.string().required('Description required'),
-        department: Yup.string().required('Description required'),
+        department: Yup.string().required('Department required'),
         modeOfCommunication: Yup.string().required('Mode of Communication required'),
         hobbies: Yup.array().min(1, 'Hobbies required'),
         dateOfJoining: Yup.date().required('Date of Joining required').nullable()
     });
     const onSubmit = values => {
-
-        console.log('values: ', values);
+        props.next(values , true);
     } 
 
     return (
-        <Formik initialValues = {initialValues}
+        <Formik initialValues = {props.data}
                 validationSchema= {validationSchema}
                 onSubmit = {onSubmit}
                 >
             {
                 (formik) => {
                     return (
-                        <Form className='App'>
+                        
+                        <Form>
+                        <p className="form-label"> Personal Details </p>
                             <Input 
                             type = 'email'
                             label = 'Email Address'
@@ -81,6 +82,7 @@ export default function PersonalForm() {
                             name='dateOfJoining'
                             label='Enter Date of Joining'
                             />
+                            <button type = 'submit' onClick = {()=> props.prev(formik.values)}>Back</button>
                             <button type = 'submit'>Submit</button>
                         </Form>
                     )
