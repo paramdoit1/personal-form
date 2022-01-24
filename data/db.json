@@ -1,0 +1,45 @@
+{
+  "details": [
+    {
+      "username": "user1",
+      "password": "pass",
+      "email": "paramasivam.sellappan@cognizant.com",
+      "description": "abc",
+      "department": "cards",
+      "modeOfCommunication": "telephone",
+      "hobbies": [
+        "playing"
+      ],
+      "dateOfJoining": "2022-02-21T07:00:00.000Z",
+      "id": 1
+    },
+    {
+      "username": "user2",
+      "password": "pass",
+      "email": "paramdoit1@gmail.com",
+      "description": "abc",
+      "department": "banking",
+      "modeOfCommunication": "telephone",
+      "hobbies": [
+        "playing",
+        "gardening",
+        "reading"
+      ],
+      "dateOfJoining": "2022-02-07T07:00:00.000Z",
+      "id": 2
+    },
+    {
+      "username": "ddsf",
+      "password": "sss",
+      "email": "ewr@ewrew.com",
+      "description": "dsfdsfsd",
+      "department": "technology",
+      "modeOfCommunication": "telephone",
+      "hobbies": [
+        "watching tv"
+      ],
+      "dateOfJoining": "2021-12-07T07:00:00.000Z",
+      "id": 3
+    }
+  ]
+}

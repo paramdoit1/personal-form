@@ -3,7 +3,7 @@ import './App.css';
 import { Formikcontainer } from './components/FormikContainer';
 import LoginForm from './pages/LoginForm';
 import PersonalForm from './pages/PersonalForm';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const formData = {
   username: '',
@@ -32,6 +32,14 @@ function App() {
 
  const makeApiRequest = finalData =>{
   console.log('Final Data: ', finalData);
+  fetch("http://localhost:8000/details", {
+    method:'POST',
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(finalData)
+  })
+  .then(()=> {
+    console.log('Data:: added');
+  })
  }
   const handleNextStep = (newData, finalStep = false) => {
     setData(data1 =>({...data1, ...newData}));

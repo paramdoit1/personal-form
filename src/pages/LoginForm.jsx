@@ -1,4 +1,5 @@
 import React from "react";
+import {useEffect} from 'react';
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 
@@ -19,6 +20,17 @@ const LoginForm = (props) => {
   const onSubmit = (values) => {
     props.next(values);
   };
+
+  useEffect(() => {
+    fetch("http://localhost:8000/details")
+    .then(response=> {
+      return response.json();
+    })
+    .then(data=> {
+      console.log('Data::',data);
+    })
+  
+  }, [])
 
   return (
     <Formik
